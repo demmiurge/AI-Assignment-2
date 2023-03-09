@@ -76,7 +76,10 @@ public class FSM_Roomba : FiniteStateMachine
                 m_GoToTarget.enabled = true;
             },
             () => { },
-            () =>  { m_GoToTarget.enabled = false; }
+            () =>
+            {
+                m_GoToTarget.enabled = false;
+            }
         );
 
         State CleanDust= new State("Clean Dust",
@@ -137,7 +140,6 @@ public class FSM_Roomba : FiniteStateMachine
             () =>
             {
                 m_RoombaBlackboard.AddToMemory(m_Dust);
-                m_Dust.tag = "MEMO";
             }
         );
 
@@ -150,7 +152,6 @@ public class FSM_Roomba : FiniteStateMachine
             () =>
             {
                 m_RoombaBlackboard.AddToMemory(m_Dust);
-                m_Dust.tag = "MEMO";
             }
         );
 
@@ -196,6 +197,7 @@ public class FSM_Roomba : FiniteStateMachine
         AddStates(Patrol, CleanPoo, CleanDust, ReachPoo, ReachDust);
 
         AddTransition(Patrol, locationReached, Patrol);
+
         AddTransition(Patrol, pooDetected, ReachPoo);
         AddTransition(ReachPoo, pooCloser, ReachPoo);
         AddTransition(ReachPoo, dustDetectedRemember, ReachPoo);
@@ -203,12 +205,14 @@ public class FSM_Roomba : FiniteStateMachine
         AddTransition(CleanPoo, Remembered, ReachDust);
         AddTransition(CleanPoo, Cleaned, Patrol);
 
+        AddTransition(Patrol, dustDetected, ReachDust);
         AddTransition(ReachDust, dustCloser, ReachDust);
         AddTransition(ReachDust, pooDetectedRemember, ReachPoo);
+
         AddTransition(ReachDust, dustReached, CleanDust);
-        AddTransition(Patrol, dustDetected, ReachDust);
+        //AddTransition(CleanDust, Remembered, ReachDust);
         AddTransition(CleanDust, Cleaned, Patrol);
-        AddTransition(CleanDust, Remembered, ReachDust);
+        AddTransition(Patrol, Remembered, ReachDust);
 
         initialState = Patrol;
 
