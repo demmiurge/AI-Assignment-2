@@ -2623,6 +2623,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 1650485989}
+  - {fileID: 1851820548}
   m_Father: {fileID: 0}
   m_RootOrder: 7
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -6668,6 +6669,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: MOUSE (1)
       objectReference: {fileID: 0}
+    - target: {fileID: 1752029864694060, guid: d86d9046330caa04c9c3cce05f37154f, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 4727276683208836, guid: d86d9046330caa04c9c3cce05f37154f, type: 3}
       propertyPath: m_RootOrder
       value: 12
@@ -7668,6 +7673,52 @@ Transform:
   m_Father: {fileID: 1587323226}
   m_RootOrder: -1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 90}
+--- !u!1 &1851820547
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1851820548}
+  - component: {fileID: 1851820549}
+  m_Layer: 0
+  m_Name: MouseSpawner
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1851820548
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1851820547}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 458160356}
+  m_RootOrder: -1
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1851820549
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1851820547}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 885893bcc0b293e43887ea46f67e616f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Mouse: {fileID: 1752029864694060, guid: d86d9046330caa04c9c3cce05f37154f, type: 3}
+  interval: 15
 --- !u!1 &1853327426
 GameObject:
   m_ObjectHideFlags: 0

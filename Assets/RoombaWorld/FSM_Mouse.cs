@@ -16,6 +16,8 @@ public class FSM_Mouse : FiniteStateMachine
         m_MouseBlackboard = GetComponent<MOUSE_Blackboard>();
         m_GoToTarget = GetComponent<GoToTarget>();
         m_Context = GetComponent<SteeringContext>();
+        temp = new GameObject();
+        temp.transform.position = RandomLocationGenerator.RandomWalkableLocation();
         base.OnEnter(); // do not remove
     }
 
@@ -30,8 +32,6 @@ public class FSM_Mouse : FiniteStateMachine
         
         State Wander = new State("Wander",
             () => { m_GoToTarget.enabled = true;
-                temp = new GameObject();
-                temp.transform.position = RandomLocationGenerator.RandomWalkableLocation();
                 m_GoToTarget.target = temp;
                 Debug.Break();
             },

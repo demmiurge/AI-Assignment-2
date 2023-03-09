@@ -5,10 +5,15 @@ using UnityEngine;
 public class MouseSpawner : MonoBehaviour
 {
     public GameObject Mouse;
-    public float interval = 55f;
-    public GameObject points;
+    public float interval = 15f;
+    private GameObject[] points;
 
     private float elapsedTime = 0;
+
+    void Awake()
+    {
+        points = GameObject.FindGameObjectsWithTag("EXIT");
+    }
 
     // Start is called before the first frame update
     void Start()
@@ -23,7 +28,18 @@ public class MouseSpawner : MonoBehaviour
         if (elapsedTime >= interval)
         {
             GameObject mouseClone = Instantiate(Mouse);
-            //mouseClone.transform.position = 
+            mouseClone.transform.position = GetRandomLocation().transform.position;
+
+            elapsedTime = 0;
         }
+        else
+        {
+            elapsedTime += Time.deltaTime;
+        }
+    }
+
+    private GameObject GetRandomLocation()
+    {
+        return points[Random.Range(0, points.Length)];
     }
 }
