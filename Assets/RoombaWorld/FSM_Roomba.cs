@@ -31,6 +31,11 @@ public class FSM_Roomba : FiniteStateMachine
 
     public override void OnConstruction()
     {
+        State Emergency = new State("Emergency",
+            () => {  },
+            () => {  },
+            () => {  }
+        );
 
         State Patrol = new State("Patrolling",
             () =>
@@ -50,7 +55,6 @@ public class FSM_Roomba : FiniteStateMachine
                 m_GoToTarget.target = m_Poo;
                 m_Context.maxSpeed *= 1.3f;
                 m_Context.maxAcceleration *= 2.6f;
-                m_ElapsedTime = 0;
             },
             () => { },
             () => {
@@ -68,9 +72,8 @@ public class FSM_Roomba : FiniteStateMachine
 
         State ReachDust = new State("Reach Dust",
             () => {
-                m_GoToTarget.enabled = true;
                 m_GoToTarget.target = m_Dust;
-                m_ElapsedTime = 0;
+                m_GoToTarget.enabled = true;
             },
             () => { },
             () =>  { m_GoToTarget.enabled = false; }
@@ -79,7 +82,11 @@ public class FSM_Roomba : FiniteStateMachine
         State CleanDust= new State("Clean Dust",
             () => { m_ElapsedTime = 0; },
             () => { m_ElapsedTime += Time.deltaTime; },
-            () => { Destroy(m_Dust); }
+            () =>
+            {
+                m_RoombaBlackboard.RetrieveFromMemory();
+                Destroy(m_Dust);
+            }
         );
 
         Transition locationReached = new Transition("Location Reached",
@@ -127,7 +134,11 @@ public class FSM_Roomba : FiniteStateMachine
                 m_Dust = SensingUtils.FindInstanceWithinRadius(gameObject, "DUST", m_RoombaBlackboard.dustDetectionRadius);
                 return m_Dust != null;
             },
-            () => { m_RoombaBlackboard.AddToMemory(m_Dust);}
+            () =>
+            {
+                m_RoombaBlackboard.AddToMemory(m_Dust);
+                m_Dust.tag = "MEMO";
+            }
         );
 
         Transition pooDetectedRemember = new Transition("Dust Detected Remember",
@@ -136,17 +147,39 @@ public class FSM_Roomba : FiniteStateMachine
                 m_Poo = SensingUtils.FindInstanceWithinRadius(gameObject, "POO", m_RoombaBlackboard.pooDetectionRadius);
                 return m_Poo != null;
             },
-            () => { m_RoombaBlackboard.AddToMemory(m_Dust); }
+            () =>
+            {
+                m_RoombaBlackboard.AddToMemory(m_Dust);
+                m_Dust.tag = "MEMO";
+            }
         );
 
         Transition pooCloser = new Transition("Poo Closer",
             () =>
             {
-                m_OtherPoo = SensingUtils.FindInstanceWithinRadius(gameObject, "DUST", m_RoombaBlackboard.dustDetectionRadius);
+                m_OtherPoo = SensingUtils.FindInstanceWithinRadius(gameObject, "POO", m_RoombaBlackboard.dustDetectionRadius);
                 return m_OtherPoo != null && SensingUtils.DistanceToTarget(gameObject, m_OtherPoo) <
                     SensingUtils.DistanceToTarget(gameObject, m_Poo);
             },
-            () => { m_Poo = m_OtherPoo;}
+            () =>
+            {
+                m_Poo = m_OtherPoo;
+                m_OtherPoo = null;
+            }
+        );
+
+        Transition dustCloser = new Transition("Dust Closer",
+            () =>
+            {
+                m_OtherDust = SensingUtils.FindInstanceWithinRadius(gameObject, "DUST", m_RoombaBlackboard.dustDetectionRadius);
+                return m_OtherDust != null && SensingUtils.DistanceToTarget(gameObject, m_OtherDust) <
+                    SensingUtils.DistanceToTarget(gameObject, m_Dust);
+            },
+            () =>
+            {
+                m_Dust = m_OtherDust;
+                m_OtherDust = null;
+            }
         );
 
         Transition Cleaned = new Transition("Cleaned",
@@ -155,8 +188,8 @@ public class FSM_Roomba : FiniteStateMachine
         );
 
         Transition Remembered = new Transition("Remembered",
-            () => { return m_RoombaBlackboard.memory.Count > 0; },
-            () => { }
+            () => { return m_RoombaBlackboard.somethingInMemory(); },
+            () => { m_Dust = m_RoombaBlackboard.memory[0];}
         );
 
             
@@ -164,16 +197,18 @@ public class FSM_Roomba : FiniteStateMachine
 
         AddTransition(Patrol, locationReached, Patrol);
         AddTransition(Patrol, pooDetected, ReachPoo);
-        AddTransition(CleanPoo, pooCloser, ReachPoo);
+        AddTransition(ReachPoo, pooCloser, ReachPoo);
         AddTransition(ReachPoo, dustDetectedRemember, ReachPoo);
         AddTransition(ReachPoo, pooReached, CleanPoo);
         AddTransition(CleanPoo, Remembered, ReachDust);
         AddTransition(CleanPoo, Cleaned, Patrol);
 
-        AddTransition(Patrol, dustDetected, ReachDust);
+        AddTransition(ReachDust, dustCloser, ReachDust);
         AddTransition(ReachDust, pooDetectedRemember, ReachPoo);
         AddTransition(ReachDust, dustReached, CleanDust);
+        AddTransition(Patrol, dustDetected, ReachDust);
         AddTransition(CleanDust, Cleaned, Patrol);
+        AddTransition(CleanDust, Remembered, ReachDust);
 
         initialState = Patrol;
 

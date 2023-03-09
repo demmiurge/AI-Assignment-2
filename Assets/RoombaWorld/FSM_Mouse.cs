@@ -51,7 +51,7 @@ public class FSM_Mouse : FiniteStateMachine
                 m_GoToTarget.target = m_MouseBlackboard.RandomExitPoint();
             },
             () => { },
-            () =>  { Destroy(gameObject); }
+            () =>  { }
         );
 
         State Flee = new State("Flee",
@@ -62,11 +62,11 @@ public class FSM_Mouse : FiniteStateMachine
                 m_Context.maxAcceleration *= 4;
             },
             () => { },
-            () => { Destroy(gameObject); }
+            () => { }
         );
 
         State Empty = new State("Empty",
-            () => { },
+            () => { Destroy(gameObject); },
             () => { },
             () => { }
         );

@@ -6978,7 +6978,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &1650485989
 Transform:
   m_ObjectHideFlags: 0
@@ -7962,7 +7962,7 @@ MonoBehaviour:
   showUnwalkableNodes: 1
   debugMode: 4
   debugFloor: 0
-  debugRoof: 10000
+  debugRoof: 1
   manualDebugFloorRoof: 0
   showSearchTree: 0
   unwalkableNodeDebugSize: 0.3
