@@ -5,7 +5,7 @@ using UnityEngine;
 public class MouseSpawner : MonoBehaviour
 {
     public GameObject Mouse;
-    public float interval = 15f;
+    public float interval = 25f;
     private GameObject[] points;
 
     private float elapsedTime = 0;
