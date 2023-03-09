@@ -18,12 +18,14 @@ public class ROOMBA_Blackboard : MonoBehaviour {
 
     public float currentCharge = 100;
 
+    public float cleanTime = 0.5f;
+
     private TextMesh energyLine;
     
     public List<GameObject> memory; // list of detected dust units not picked due to presence of poo
                                     // or other events
 
-	
+
 	void Start () {
         memory = new List<GameObject>();
         energyLine = GameObject.Find("EnergyLine").GetComponent<TextMesh>();
@@ -75,4 +77,5 @@ public class ROOMBA_Blackboard : MonoBehaviour {
             return result;
         }
     }
+
 }

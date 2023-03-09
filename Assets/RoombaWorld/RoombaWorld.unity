@@ -726,6 +726,7 @@ GameObject:
   - component: {fileID: 111757792}
   - component: {fileID: 111757794}
   - component: {fileID: 111757795}
+  - component: {fileID: 111757796}
   m_Layer: 0
   m_Name: roomba
   m_TagString: ROOMBA
@@ -822,6 +823,7 @@ MonoBehaviour:
   minCharge: 15
   maxCharge: 99
   currentCharge: 100
+  cleanTime: 0.5
   memory: []
 --- !u!114 &111757792
 MonoBehaviour:
@@ -904,7 +906,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 823459bfcabf59e4bbb7d30c1033e0ef, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  fsm: {fileID: 11400000, guid: f076edc2760f16a48a345ad73ccea1c4, type: 2}
+  fsm: {fileID: 11400000, guid: 446fdd3e60eaf5a4ebb3f3e001454dff, type: 2}
   currentState: 
   textMesh: {fileID: 0}
 --- !u!114 &111757795
@@ -935,6 +937,19 @@ MonoBehaviour:
   tagPenalties: 0000000010270000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000
   graphMask:
     value: -1
+--- !u!114 &111757796
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 111757782}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1921e82befcb5e249b8ea882b9be3d12, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  target: {fileID: 0}
 --- !u!1 &117488038
 GameObject:
   m_ObjectHideFlags: 0
@@ -6760,7 +6775,7 @@ GameObject:
   - component: {fileID: 1587323226}
   m_Layer: 0
   m_Name: CARPET
-  m_TagString: MEMO
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -8202,7 +8217,7 @@ MonoBehaviour:
   showUnwalkableNodes: 1
   debugMode: 4
   debugFloor: 0
-  debugRoof: 10000
+  debugRoof: 1
   manualDebugFloorRoof: 0
   showSearchTree: 0
   unwalkableNodeDebugSize: 0.3
