@@ -2876,7 +2876,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 496497799}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 119.2, y: 80.8, z: 0}
+  m_LocalPosition: {x: 119.2, y: 85.7, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -3282,7 +3282,7 @@ GameObject:
   - component: {fileID: 653363589}
   m_Layer: 0
   m_Name: ROUNDCARPET
-  m_TagString: Untagged
+  m_TagString: CARPET
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -6004,7 +6004,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1449638924}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -162.4, y: -89.8, z: 0}
+  m_LocalPosition: {x: -168.9, y: -93.6, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -6293,7 +6293,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1504322527}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 99.5, y: -97.5, z: 0}
+  m_LocalPosition: {x: 90.8, y: -97.5, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -6775,7 +6775,7 @@ GameObject:
   - component: {fileID: 1587323226}
   m_Layer: 0
   m_Name: CARPET
-  m_TagString: Untagged
+  m_TagString: CARPET
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -7505,7 +7505,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1742425657}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -179.2, y: 7, z: 0}
+  m_LocalPosition: {x: -185.2, y: 5.9, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -7748,7 +7748,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &1851820548
 Transform:
   m_ObjectHideFlags: 0
@@ -7971,7 +7971,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1874325744}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -116.3, y: -100.6, z: 0}
+  m_LocalPosition: {x: -116.3, y: -108.8, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -8208,7 +8208,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   version: 1
   data:
-    dataString: UEsDBBQAAAgIAAAIIewY7LcvdgIAADEFAAALACQAZ3JhcGgwLmpzb24KACAAAAAAAAEAGAAAgD7V3rGdAQCAPtXesZ0BAIA+1d6xnQFlVE1zmzAQ/SsenWsPGIjt3lriOD0k8dTt5MJFgcVoLEuMPmI7Gf/3rgQYQrlYfm8/3j4tfBImdA25kWqjWPEkCyDfJ8SdybdJTz7Cme6l2LEP6GJeWWEqF0R9zG9qmEQ8dGlaHsEolv8Qe+6CAwStYKVUx3Wxh1RqoxEuKdeAlJLGZQuEPifkjD/TlUu54Gm+cKcPPK2CyRWPOQgDahAazgJ8VmGStCnhbIXPcnHXJi5mYTLHOlG4ngYLX8SKnNNjDYWbqK8VR7e28dIHCpy2jZm75pJzplupxFxqb0VKa21xUAwoGMXRvT7nRAVsX5lx8ktZajCtL4pe7plCB5uq5KdsbD1SfWiUvVNuXZ/QK2pKPv3HThu6VPL42HUNA9fBVCw//KaXnGozcH0I33+VbcWJ8gN94/BagXiWGyWtKJA0yrpUq2F+3/+9DZZWkB96vJE6Am3d+9253V2xm+HqZz+nnB3fHDWLG2DHpXfbbwYovJdfKNjvjdulqEGdir8a/tD9cMFa4oEpbZBqpxRO3pu0yoWStffMTWNNKpUAD7eiaxCUm8sWy5jxBY64QdsR80Ddq9Q2b7nuDRmleLiPD4IRtZWn22XpSp6eQFcv1nAmoBftiGf0KZVCNPs19KRL21lV0nyQtres+LpaZFnk0Sq4K5fx3RziJJwG8SpcLqIkTOIQkigifveYwDkp3zZCW3vw1kRfXOCedV+YyUbR2u96oehpwz6OcmA5E6Xc5QpAvDQVbsJBYRN8J4t1wdCgHRjDhL9v8pkRLvMDFNmtUOYnXZ+NollfJSM1e5fGIRlJ/SclIw6+7fJWwTuDk2veFbuS6z9QSwMEFAAACAgAAAgh7F7xd3FtAAAAeAAAAAkAJABtZXRhLmpzb24KACAAAAAAAAEAGAAAgD7V3rGdAQCAPtXesZ0BAIA+1d6xnQGrVipLLSrOzM9TslIw0TPSMzTXUVBKL0osyCgGihiCOKWZKSB2tJJFSrKxpYFZmoWJmVGqiamhroGJpaGFubGpoamJYaqpsbFSLFB9SWVBql9ibipET0BiSUZaZl5KZl66nntRZoo7yGil2FoAUEsBAi0AFAAACAgAAAgh7Bjsty92AgAAMQUAAAsAJAAAAAAAAAAAAAAAAAAAAGdyYXBoMC5qc29uCgAgAAAAAAABABgAAIA+1d6xnQEAgD7V3rGdAQCAPtXesZ0BUEsBAi0AFAAACAgAAAgh7F7xd3FtAAAAeAAAAAkAJAAAAAAAAAAAAAAAwwIAAG1ldGEuanNvbgoAIAAAAAAAAQAYAACAPtXesZ0BAIA+1d6xnQEAgD7V3rGdAVBLBQYAAAAAAgACALgAAAB7AwAAAAA=
+    dataString: UEsDBBQAAAgIAAAIIezCJFJXdgIAADEFAAALACQAZ3JhcGgwLmpzb24KACAAAAAAAAEAGAAAgD7V3rGdAQCAPtXesZ0BAIA+1d6xnQFlVE1zmzAQ/SsenWsP2BDbvbXEcXpI4qnbyYWLAovRWEiMPmI7Gf/3rgQYQrlYfm8/3j4tfBImdA2ZkWqrWP4kcyDfJ8SdybdJTz7CmR6k2LMP6GJeWW5KF0R9zG9qmEQ8dGlaVmAUy36IA3fBAYJWsEKqapMfIJHaaIQLyjUgpaRx2QKhzwk548907VIueJov3ekDT+tgcsVjBsKAGoSGswCfdRjHbUo4W+OzWt61ictZGM+xziLcTIOlL2JFxmlVQ+4m6mtFi1vbaOUDBU7bxsxdc8k5061UYi61tyKhtbY4KAbkjOLoXp9zogR2KM04+aUoNJjWF0Uv90yhg01V8lM2tlZUHxtl75Rb1yf0ipqST/+x04YulKweu65h4DqYkmXH3/SSUW0Grg/h+6+yrThRfqRvHF5LEM9yq6QVOZJGWZdqNczv+7+3wZISsmOPN1JHoK17vzu3uyt2M1z97OeEs+rNUbOoAfZcerf9ZoDCe/mFgv3euF2KGtSp+KvhDz0MF6wlHpjSBql2SuHkvUmrXCjZeM/cNNYkUgnwcCu6BkG5ueywjBlf4IgbtB0xD9S9Sm3zluvekFGKh/v4IBhRO3m6XZYu5ekJdPliDWcCetGOeEafEilEs19DT7q0vVUFzQZpB8vyr6tFVnm2WAd3xSq6m0MUh9MgWoer5SIO4yiEeLEgfveYwDkp3zVCW3vw1kRfXOCedV+YyVbR2u96ruhpyz4qObCciULuMwUgXpoKN+GgsAm+k/kmZ2jQHoxhwt83+UwJl9kR8vRWKPWTbs5G0bSvkpKavUvjkJQk/pOSEgffdnmn4J3ByTXvil3J9R9QSwMEFAAACAgAAAgh7F7xd3FtAAAAeAAAAAkAJABtZXRhLmpzb24KACAAAAAAAAEAGAAAgD7V3rGdAQCAPtXesZ0BAIA+1d6xnQGrVipLLSrOzM9TslIw0TPSMzTXUVBKL0osyCgGihiCOKWZKSB2tJJFSrKxpYFZmoWJmVGqiamhroGJpaGFubGpoamJYaqpsbFSLFB9SWVBql9ibipET0BiSUZaZl5KZl66nntRZoo7yGil2FoAUEsBAi0AFAAACAgAAAgh7MIkUld2AgAAMQUAAAsAJAAAAAAAAAAAAAAAAAAAAGdyYXBoMC5qc29uCgAgAAAAAAABABgAAIA+1d6xnQEAgD7V3rGdAQCAPtXesZ0BUEsBAi0AFAAACAgAAAgh7F7xd3FtAAAAeAAAAAkAJAAAAAAAAAAAAAAAwwIAAG1ldGEuanNvbgoAIAAAAAAAAQAYAACAPtXesZ0BAIA+1d6xnQEAgD7V3rGdAVBLBQYAAAAAAgACALgAAAB7AwAAAAA=
     upgradeData: 
     file_cachedStartup: {fileID: 0}
     data_cachedStartup: 
@@ -8238,7 +8238,7 @@ MonoBehaviour:
     - {r: 0, g: 0, b: 0, a: 0}
   tagNames:
   - Basic Ground
-  - MEMO
+  - CARPET
   - 2
   - 3
   - 4
