@@ -33,7 +33,6 @@ public class FSM_Mouse : FiniteStateMachine
         State Wander = new State("Wander",
             () => { m_GoToTarget.enabled = true;
                 m_GoToTarget.target = temp;
-                Debug.Break();
             },
            () => { },
             () => { m_GoToTarget.enabled = false; Destroy(temp);}
@@ -95,6 +94,8 @@ public class FSM_Mouse : FiniteStateMachine
         AddTransition(Poo, roombaDetected, Flee);
         AddTransition(Poo, TimeOut, Exit);
         AddTransition(Exit, locationReached, Empty);
+        AddTransition(Exit, roombaDetected, Flee);
+        AddTransition(Flee, locationReached, Empty);
 
         initialState = Wander;
     }
