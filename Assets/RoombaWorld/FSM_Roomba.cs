@@ -205,7 +205,6 @@ public class FSM_Roomba : FiniteStateMachine
         AddTransition(ReachDust, pooDetectedRemember, ReachPoo);
 
         AddTransition(ReachDust, dustReached, CleanDust);
-        //AddTransition(CleanDust, Remembered, ReachDust);
         AddTransition(CleanDust, Cleaned, Patrol);
         AddTransition(Patrol, Remembered, ReachDust);
 
