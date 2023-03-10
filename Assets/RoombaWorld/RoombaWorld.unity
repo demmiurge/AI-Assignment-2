@@ -817,7 +817,7 @@ MonoBehaviour:
   pooDetectionRadius: 150
   dustReachedRadius: 5
   pooReachedRadius: 5
-  chargingStationReachedRadius: 2
+  chargingStationReachedRadius: 4
   energyConsumptionPerSecond: 1
   energyRechargePerSecond: 15
   minCharge: 15
@@ -825,6 +825,7 @@ MonoBehaviour:
   currentCharge: 100
   cleanTime: 0.5
   memory: []
+  stations: []
 --- !u!114 &111757792
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -906,7 +907,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 823459bfcabf59e4bbb7d30c1033e0ef, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  fsm: {fileID: 11400000, guid: 446fdd3e60eaf5a4ebb3f3e001454dff, type: 2}
+  fsm: {fileID: 11400000, guid: 65f48a36b0c8027418ad05445be93de7, type: 2}
   currentState: 
   textMesh: {fileID: 0}
 --- !u!114 &111757795

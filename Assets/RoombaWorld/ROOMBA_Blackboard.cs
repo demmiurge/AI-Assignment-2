@@ -9,7 +9,7 @@ public class ROOMBA_Blackboard : MonoBehaviour {
 
     public float dustReachedRadius = 5; // reachability radius
     public float pooReachedRadius = 5;  // reachability radius
-    public float chargingStationReachedRadius = 2;  // reachability radius
+    public float chargingStationReachedRadius = 4;  // reachability radius
 
     public float energyConsumptionPerSecond = 1;    
     public float energyRechargePerSecond = 15;
@@ -24,7 +24,12 @@ public class ROOMBA_Blackboard : MonoBehaviour {
     
     public List<GameObject> memory; // list of detected dust units not picked due to presence of poo
                                     // or other events
+    public GameObject[] stations;
 
+   void Awake()
+   {
+       stations = GameObject.FindGameObjectsWithTag("ENERGY");
+   }
 
 	void Start () {
         memory = new List<GameObject>();
@@ -76,6 +81,26 @@ public class ROOMBA_Blackboard : MonoBehaviour {
             memory.RemoveAt(0);
             return result;
         }
+    }
+
+    //Find the nearest station
+    public GameObject NearestStation()
+    {
+        GameObject nearest = stations[0];
+
+        float closest = SensingUtils.DistanceToTarget(gameObject, nearest);
+        float current;
+
+        for (int i = 0; i < stations.Length; i++)
+        {
+            current = SensingUtils.DistanceToTarget(gameObject, stations[i]);
+            if (current < closest)
+            {
+                closest = current;
+                nearest = stations[i];
+            }
+        }
+        return nearest;
     }
 
 }

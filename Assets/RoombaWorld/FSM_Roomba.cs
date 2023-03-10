@@ -31,11 +31,6 @@ public class FSM_Roomba : FiniteStateMachine
 
     public override void OnConstruction()
     {
-        State Emergency = new State("Emergency",
-            () => {  },
-            () => {  },
-            () => {  }
-        );
 
         State Patrol = new State("Patrolling",
             () =>
