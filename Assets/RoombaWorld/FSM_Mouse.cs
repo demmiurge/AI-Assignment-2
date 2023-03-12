@@ -60,6 +60,7 @@ public class FSM_Mouse : FiniteStateMachine
                 m_GoToTarget.target = m_MouseBlackboard.NearestExitPoint();
                 m_Context.maxSpeed *= 2;
                 m_Context.maxAcceleration *= 4;
+                this.GetComponent<SpriteRenderer>().color = Color.green;
             },
             () => { },
             () => { }
