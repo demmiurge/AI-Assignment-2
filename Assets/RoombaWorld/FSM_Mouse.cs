@@ -29,14 +29,14 @@ public class FSM_Mouse : FiniteStateMachine
 
     public override void OnConstruction()
     {
-        
         State Wander = new State("Wander",
             () => { m_GoToTarget.enabled = true;
                 m_GoToTarget.target = temp;
             },
            () => { },
-            () => { m_GoToTarget.enabled = false; Destroy(temp);}
-            );
+           () => { m_GoToTarget.enabled = false; Destroy(temp);}
+       );
+
         State Poo = new State("Poo",
             () => { GameObject clone = Instantiate(m_MouseBlackboard.pooPrefab);
                 clone.transform.position = gameObject.transform.position;
