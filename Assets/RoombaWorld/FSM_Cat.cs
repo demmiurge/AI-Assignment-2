@@ -29,15 +29,19 @@ public class FSM_Cat : FiniteStateMachine
     {
         FiniteStateMachine CatRoomba = ScriptableObject.CreateInstance<FSM_CatRoomba>();
 
-        State Wander = new State("Wander",
-           () => {
-               temp = new GameObject();
-               m_GoToTarget.enabled = true;
-               temp.transform.position = RandomLocationGenerator.RandomWalkableLocation();
-               m_GoToTarget.target = temp;
-           },
+        State ReachMouse = new State("Reach Mouse",
+          () => {
+              m_GoToTarget.enabled = true;
+              m_GoToTarget.target = m_CatBlackboard.roomba;
+              m_Context.maxAcceleration *= 1.5f;
+              m_Context.maxSpeed *= 1.5f;
+          },
           () => { },
-          () => { m_GoToTarget.enabled = false; Destroy(temp); }
+          () => {
+              m_GoToTarget.enabled = false;
+              m_Context.maxAcceleration /= 1.5f;
+              m_Context.maxSpeed /= 1.5f;
+          }
       );
 
         Transition locationReached = new Transition("Location Reached",
@@ -51,10 +55,10 @@ public class FSM_Cat : FiniteStateMachine
         );
 
             
-        AddStates(CatRoomba, Wander);
+        AddStates(CatRoomba, ReachMouse);
 
-        AddTransition(Wander, locationReached, Wander);
-        AddTransition(Wander, TimeOut, CatRoomba);
+        AddTransition(ReachMouse, locationReached, ReachMouse);
+        AddTransition(ReachMouse, TimeOut, CatRoomba);
          
         //initialState = ... 
 
