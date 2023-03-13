@@ -26,11 +26,10 @@ public class FSM_Energy : FiniteStateMachine
 
     public override void OnConstruction()
     {
-        /* STAGE 1: create the states with their logic(s)
-         *-----------------------------------------------*/
-
+       //FSM of normal roomba behaviour
         FiniteStateMachine Roomba = ScriptableObject.CreateInstance<FSM_Roomba>();
 
+        //Go to the charging station
         State GoToStation = new State("Go To Station",
             () => { m_GoToTarget.enabled = true;
                 m_Station = m_RoombaBlackboard.NearestStation();
@@ -40,25 +39,26 @@ public class FSM_Energy : FiniteStateMachine
             () => { m_GoToTarget.enabled = false;}  
         );
 
+        //Charging
         State Charging = new State("Chargning",
             () => { },
             () => { m_RoombaBlackboard.Recharge(Time.deltaTime);},
             () => { }
         );
 
-        /* STAGE 2: create the transitions with their logic(s)
-         * ---------------------------------------------------*/
-
+        //If the charge is low
         Transition lowCharge = new Transition("Low Charge",
             () => { return m_RoombaBlackboard.currentCharge <= m_RoombaBlackboard.minCharge;}, 
             () => { }  
         );
 
+        //If it's charged
         Transition Charged = new Transition("High Charge",
             () => { return m_RoombaBlackboard.currentCharge >= m_RoombaBlackboard.maxCharge; },
             () => { }
         );
 
+        //If the station was reached
         Transition locationReached = new Transition("Location Reached",
             () => { return SensingUtils.DistanceToTarget(gameObject, m_Station) <= m_RoombaBlackboard.chargingStationReachedRadius; },
             () => { }

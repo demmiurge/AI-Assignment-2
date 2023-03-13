@@ -29,6 +29,7 @@ public class FSM_CatRoomba : FiniteStateMachine
 
     public override void OnConstruction()
     {
+        //Wandering around the flat
         State Wander = new State("Wander",
             () => {
                 temp = new GameObject();
@@ -40,6 +41,7 @@ public class FSM_CatRoomba : FiniteStateMachine
            () => { m_GoToTarget.enabled = false; Destroy(temp); }
        );
 
+        //Pursuing roomba after it was detected
         State ReachRoomba = new State("Reach Roomba",
            () => {
                m_Seek.enabled = true;
@@ -56,28 +58,33 @@ public class FSM_CatRoomba : FiniteStateMachine
            }
        );
 
+        //Riding roomba
         State RideRoomba = new State("Ride Roomba",
            () => { gameObject.transform.parent = m_CatBlackboard.roomba.transform; m_ElapsedTime = 0; m_CatBlackboard.m_CurrentTime = 0f; },
            () => { m_ElapsedTime += Time.deltaTime; },
            () => { gameObject.transform.parent = null; }
        );
 
+        //If roomba was reached
         Transition roombaReached = new Transition("Roomba Reached",
           () => { return SensingUtils.DistanceToTarget(gameObject, m_CatBlackboard.roomba) <= m_CatBlackboard.roombaReachRadius; },
           () => { }
       );
 
+        //If wandering location was reached
         Transition locationReached = new Transition("Location Reached",
            () => m_GoToTarget.routeTerminated(),
            () => { }
        );
 
+        //If roomba was detected
         Transition roombaDetected = new Transition("Roomba Detected",
             () => { return SensingUtils.DistanceToTarget(gameObject, m_CatBlackboard.roomba) <= m_CatBlackboard.roombaDetectionRadius 
                 && m_CatBlackboard.m_CurrentTime >= m_CatBlackboard.m_RoombaRestTime; },
             () => { }
         );
 
+        //Roomba riding time
         Transition TimeOut = new Transition("Time Out",
             () => { return m_ElapsedTime >= m_CatBlackboard.m_RoombaTime; },
             () => { }

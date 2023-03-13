@@ -31,7 +31,7 @@ public class FSM_Roomba : FiniteStateMachine
 
     public override void OnConstruction()
     {
-
+        //Patrolling the flat
         State Patrol = new State("Patrolling",
             () =>
             {
@@ -44,6 +44,7 @@ public class FSM_Roomba : FiniteStateMachine
             () => { m_GoToTarget.enabled = false; Destroy(m_Patrol); }   
         );
 
+        //Reach a detected poo
         State ReachPoo = new State("Reach Poo",
             () => {
                 m_GoToTarget.enabled = true;
@@ -59,12 +60,14 @@ public class FSM_Roomba : FiniteStateMachine
             }
         );
 
+        //Clean the poo
         State CleanPoo = new State("Clean Poo",
             () => { m_ElapsedTime = 0; },
             () => { m_ElapsedTime += Time.deltaTime;},
             () => { Destroy(m_Poo); }
         );
 
+        //Reach detected dust
         State ReachDust = new State("Reach Dust",
             () => {
                 m_GoToTarget.target = m_Dust;
@@ -77,6 +80,7 @@ public class FSM_Roomba : FiniteStateMachine
             }
         );
 
+        //Clean the dust
         State CleanDust= new State("Clean Dust",
             () => { m_ElapsedTime = 0; },
             () => { m_ElapsedTime += Time.deltaTime; },
@@ -87,11 +91,13 @@ public class FSM_Roomba : FiniteStateMachine
             }
         );
 
+        //If the patrol location was reached
         Transition locationReached = new Transition("Location Reached",
             () => m_GoToTarget.routeTerminated(),
             () => { }
         );
 
+        //If a poo was detected
         Transition pooDetected = new Transition("Poo Detected",
             () =>
             {
@@ -101,6 +107,7 @@ public class FSM_Roomba : FiniteStateMachine
             () => { } 
         );
 
+        //If dust was detected
         Transition dustDetected = new Transition("Dust Detected",
             () =>
             {
@@ -110,6 +117,7 @@ public class FSM_Roomba : FiniteStateMachine
             () => { }
         );
 
+        //If poo was reached
         Transition pooReached = new Transition("Poo Reached",
             () =>
             {
@@ -118,6 +126,7 @@ public class FSM_Roomba : FiniteStateMachine
             () => { }
         );
 
+        //If dust was reached
         Transition dustReached = new Transition("Dust Reached",
             () =>
             {
@@ -126,6 +135,7 @@ public class FSM_Roomba : FiniteStateMachine
             () => { }
         );
 
+        //If while reaching dust, there's another dust to remember
         Transition dustDetectedRemember = new Transition("Dust Detected Remember",
             () =>
             {
@@ -138,6 +148,7 @@ public class FSM_Roomba : FiniteStateMachine
             }
         );
 
+        //If while reaching poo, dust was detected and remembered
         Transition pooDetectedRemember = new Transition("Dust Detected Remember",
             () =>
             {
@@ -150,6 +161,7 @@ public class FSM_Roomba : FiniteStateMachine
             }
         );
 
+        //If there's poo closer
         Transition pooCloser = new Transition("Poo Closer",
             () =>
             {
@@ -164,6 +176,7 @@ public class FSM_Roomba : FiniteStateMachine
             }
         );
 
+        //If there's dust closer
         Transition dustCloser = new Transition("Dust Closer",
             () =>
             {
@@ -178,11 +191,13 @@ public class FSM_Roomba : FiniteStateMachine
             }
         );
 
+        //If poo or dust was cleaned
         Transition Cleaned = new Transition("Cleaned",
             () => { return m_ElapsedTime >= m_RoombaBlackboard.cleanTime;},
             () => { }
         );
 
+        //If there's remembered dust in the memory
         Transition Remembered = new Transition("Remembered",
             () => { return m_RoombaBlackboard.somethingInMemory(); },
             () => { m_Dust = m_RoombaBlackboard.memory[0];}

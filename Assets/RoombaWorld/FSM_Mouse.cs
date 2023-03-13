@@ -29,6 +29,7 @@ public class FSM_Mouse : FiniteStateMachine
 
     public override void OnConstruction()
     {
+        //Go to a location to poo
         State Wander = new State("Wander",
             () => { m_GoToTarget.enabled = true;
                 m_GoToTarget.target = temp;
@@ -37,6 +38,7 @@ public class FSM_Mouse : FiniteStateMachine
            () => { m_GoToTarget.enabled = false; Destroy(temp);}
        );
 
+        //Basically poo
         State Poo = new State("Poo",
             () => { GameObject clone = Instantiate(m_MouseBlackboard.pooPrefab);
                 clone.transform.position = gameObject.transform.position;
@@ -46,6 +48,7 @@ public class FSM_Mouse : FiniteStateMachine
             () =>  { }
         );
 
+        //Leave the flat
         State Exit = new State("Exit",
             () => { m_GoToTarget.enabled = true;
                 m_GoToTarget.target = m_MouseBlackboard.RandomExitPoint();
@@ -54,6 +57,7 @@ public class FSM_Mouse : FiniteStateMachine
             () =>  { }
         );
 
+        //Flee roomba and leave the flat
         State Flee = new State("Flee",
             () => {
                 m_GoToTarget.enabled = true;
@@ -66,22 +70,26 @@ public class FSM_Mouse : FiniteStateMachine
             () => { }
         );
 
+        //Destroy itself
         State Empty = new State("Empty",
             () => { Destroy(gameObject); },
             () => { },
             () => { }
         );
 
+        //If location was reached
         Transition locationReached = new Transition("Location Reached",
             () => m_GoToTarget.routeTerminated(),
             () => { }
         );
 
+        //If roomba was detected
         Transition roombaDetected = new Transition("Roomba Detected",
             () => { return SensingUtils.DistanceToTarget(gameObject, m_MouseBlackboard.roomba) <= m_MouseBlackboard.roombaDetectionRadius; },
             () => { }
         );
 
+        //Poo time
         Transition TimeOut = new Transition("Time Out",
             () => { return m_ElapsedTime >= m_MouseBlackboard.m_PooTime; },
             () => { }

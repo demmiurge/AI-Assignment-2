@@ -25,6 +25,7 @@ public class MouseSpawner : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        //Spawn a mouse every 25 seconds
         if (elapsedTime >= interval)
         {
             GameObject mouseClone = Instantiate(Mouse);
@@ -38,6 +39,7 @@ public class MouseSpawner : MonoBehaviour
         }
     }
 
+    //Get a random spawning location
     private GameObject GetRandomLocation()
     {
         return points[Random.Range(0, points.Length)];
