@@ -5,7 +5,7 @@ using UnityEngine;
 public class CAT_Blackboard : MonoBehaviour
 {
     public float roombaDetectionRadius = 50f;
-    public float roombaReachRadius = 3f;
+    public float roombaReachRadius = 2f;
     public GameObject roomba;
     public float m_CurrentTime = 0f;
     public float m_RoombaTime = 7f;

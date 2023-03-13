@@ -7,6 +7,7 @@ public class FSM_CatRoomba : FiniteStateMachine
 {
     private CAT_Blackboard m_CatBlackboard;
     private GoToTarget m_GoToTarget;
+    private Seek m_Seek;
     private SteeringContext m_Context;
     private float m_ElapsedTime = 0;
     private GameObject temp;
@@ -15,6 +16,7 @@ public class FSM_CatRoomba : FiniteStateMachine
     {
         m_CatBlackboard = GetComponent<CAT_Blackboard>();
         m_GoToTarget = GetComponent<GoToTarget>();
+        m_Seek = GetComponent<Seek>();
         m_Context = GetComponent<SteeringContext>();
         base.OnEnter(); // do not remove
     }
@@ -40,15 +42,17 @@ public class FSM_CatRoomba : FiniteStateMachine
 
         State ReachRoomba = new State("Reach Roomba",
            () => {
-               m_GoToTarget.enabled = true;
-               m_GoToTarget.target = m_CatBlackboard.roomba;
+               m_Seek.enabled = true;
+               m_Seek.target = m_CatBlackboard.roomba;
                m_Context.maxAcceleration *= 1.5f;
                m_Context.maxSpeed *= 1.5f;
            },
            () => { },
-           () => { m_GoToTarget.enabled = false;
+           () => {
+               m_Seek.enabled = false;
                m_Context.maxAcceleration /= 1.5f;
                m_Context.maxSpeed /= 1.5f;
+               Debug.Break();
            }
        );
 

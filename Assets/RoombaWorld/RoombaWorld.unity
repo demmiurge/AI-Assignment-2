@@ -2485,6 +2485,7 @@ GameObject:
   - component: {fileID: 438964003}
   - component: {fileID: 438964002}
   - component: {fileID: 438964001}
+  - component: {fileID: 438964005}
   m_Layer: 0
   m_Name: CAT
   m_TagString: Untagged
@@ -2651,6 +2652,20 @@ MonoBehaviour:
   speed: 0
   angularSpeed: 0
   groupManager: {fileID: 0}
+--- !u!114 &438964005
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 438963997}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5af56a3272f5f2a49886d1d936f1cc41, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  rotationalPolicy: 0
+  target: {fileID: 0}
 --- !u!1 &441451071
 GameObject:
   m_ObjectHideFlags: 0
@@ -8175,7 +8190,7 @@ MonoBehaviour:
   showUnwalkableNodes: 1
   debugMode: 4
   debugFloor: 0
-  debugRoof: 10000
+  debugRoof: 1
   manualDebugFloorRoof: 0
   showSearchTree: 0
   unwalkableNodeDebugSize: 0.3
