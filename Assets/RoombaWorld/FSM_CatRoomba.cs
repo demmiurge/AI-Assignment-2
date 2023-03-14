@@ -54,7 +54,6 @@ public class FSM_CatRoomba : FiniteStateMachine
                m_Seek.enabled = false;
                m_Context.maxAcceleration /= 1.5f;
                m_Context.maxSpeed /= 1.5f;
-               Debug.Break();
            }
        );
 
