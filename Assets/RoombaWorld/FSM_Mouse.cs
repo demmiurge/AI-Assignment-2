@@ -89,6 +89,12 @@ public class FSM_Mouse : FiniteStateMachine
             () => { }
         );
 
+        //If the cat was detected
+        Transition catDetected = new Transition("Cat Detected",
+            () => { return SensingUtils.DistanceToTarget(gameObject, m_MouseBlackboard.cat) <= m_MouseBlackboard.catDetectionRadius; },
+            () => { }
+        );
+
         //Poo time
         Transition TimeOut = new Transition("Time Out",
             () => { return m_ElapsedTime >= m_MouseBlackboard.m_PooTime; },
@@ -100,10 +106,12 @@ public class FSM_Mouse : FiniteStateMachine
 
         AddTransition(Wander, locationReached, Poo);
         AddTransition(Wander, roombaDetected, Flee);
+        AddTransition(Wander, catDetected, Flee);
         AddTransition(Poo, roombaDetected, Flee);
         AddTransition(Poo, TimeOut, Exit);
         AddTransition(Exit, locationReached, Empty);
         AddTransition(Exit, roombaDetected, Flee);
+        AddTransition(Exit, catDetected, Flee);
         AddTransition(Flee, locationReached, Empty);
 
         initialState = Wander;

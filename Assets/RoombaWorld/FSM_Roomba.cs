@@ -86,7 +86,6 @@ public class FSM_Roomba : FiniteStateMachine
             () => { m_ElapsedTime += Time.deltaTime; },
             () =>
             {
-                m_RoombaBlackboard.RetrieveFromMemory();
                 Destroy(m_Dust);
             }
         );
@@ -194,7 +193,14 @@ public class FSM_Roomba : FiniteStateMachine
         //If poo or dust was cleaned
         Transition Cleaned = new Transition("Cleaned",
             () => { return m_ElapsedTime >= m_RoombaBlackboard.cleanTime;},
-            () => { }
+            () => { 
+                if(m_RoombaBlackboard.somethingInMemory())
+                {
+                    if(m_RoombaBlackboard.memory.Contains(m_Dust))
+                    {
+                        m_RoombaBlackboard.RetrieveFromMemory();
+                    }
+                }}
         );
 
         //If there's remembered dust in the memory
